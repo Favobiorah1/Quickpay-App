@@ -1,22 +1,24 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Dashboard from "./components/Dashboard";
-import SendMoney from "./components/SendMoney";
-import Transactions from "./components/Transactions";
+import Welcome from "./Pages/WelcomePage";
+import DashBoard from "./Pages/DashBoard";
+import AirtimeRecharge from "./Pages/AirtimeRecharge";
+import DataRecharge from "./Pages/DataRecharge";
+import CableSubscription from "./Pages/CableSubscription";
+import SendMoneyForm from "./components/SendMoney";
+import TransactionHistory from "./components/Transactions";
 
-function App() {
+export default function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gray-50 text-gray-800">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/send" element={<SendMoney />} />
-          <Route path="/transactions" element={<Transactions />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Welcome />} />
+        <Route path="/dashboard" element={<DashBoard />} />
+        <Route path="/airtime" element={<AirtimeRecharge />} />
+        <Route path="/data" element={<DataRecharge />} />
+        <Route path="/cable" element={<CableSubscription />} />
+        <Route path="/send-money" element={<SendMoneyForm />} />
+        <Route path="/transactions" element={<TransactionHistory />} />
+      </Routes>
     </Router>
   );
 }
-
-export default App;

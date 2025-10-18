@@ -1,25 +1,47 @@
-function Transactions() {
-  const transactions = [
-    { id: 1, type: "Sent", to: "Daniel", amount: "-₦2,000", date: "Oct 5, 2025" },
-    { id: 2, type: "Received", from: "Chika", amount: "+₦5,000", date: "Oct 4, 2025" },
-  ];
+import React from "react";
 
+const transactions = [
+  { id: 1, type: "Send Money", amount: 5000, recipient: "Jane Doe", date: "Oct 10, 2025" },
+  { id: 2, type: "Airtime Recharge", amount: 1000, recipient: "MTN", date: "Oct 15, 2025" },
+  { id: 3, type: "Cable Subscription", amount: 3500, recipient: "DSTV", date: "Oct 16, 2025" },
+];
+
+export default function Transactions() {
   return (
-    <div className="p-6 max-w-3xl mx-auto">
-      <h2 className="text-2xl font-semibold mb-6">Transaction History</h2>
-      <div className="bg-white rounded-2xl shadow-md divide-y">
-        {transactions.map((t) => (
-          <div key={t.id} className="p-4 flex justify-between">
-            <div>
-              <p className="font-medium">{t.type === "Sent" ? `To ${t.to}` : `From ${t.from}`}</p>
-              <p className="text-sm text-gray-500">{t.date}</p>
-            </div>
-            <p className={t.type === "Sent" ? "text-red-500" : "text-green-500"}>{t.amount}</p>
-          </div>
-        ))}
-      </div>
+    <div style={styles.container}>
+      <h1 style={styles.title}>Transaction History 📜</h1>
+      <table style={styles.table}>
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Recipient</th>
+            <th>Amount (₦)</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {transactions.map((t) => (
+            <tr key={t.id}>
+              <td>{t.type}</td>
+              <td>{t.recipient}</td>
+              <td>{t.amount}</td>
+              <td>{t.date}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
 
-export default Transactions;
+const styles = {
+  container: { textAlign: "center", marginTop: "60px", padding: "20px" },
+  title: { fontSize: "2rem", marginBottom: "20px" },
+  table: {
+    margin: "0 auto",
+    borderCollapse: "collapse",
+    width: "80%",
+  },
+  th: { border: "1px solid #ddd", padding: "10px", background: "#f3f4f6" },
+  td: { border: "1px solid #ddd", padding: "10px" },
+};

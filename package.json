@@ -6,9 +6,6 @@
   "scripts": {
     "vercel-build": "vite build",
     "build": "vite build"
-  }
-}
-
   },
   "dependencies": {
     "react": "^18.3.1",
